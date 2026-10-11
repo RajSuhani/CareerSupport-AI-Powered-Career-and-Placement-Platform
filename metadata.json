@@ -1,0 +1,6 @@
+{
+  "name": "CareerSupport — AI-Powered Career and Placement Platform",
+  "description": "Production-grade AI-powered career and placement platform for college students and job seekers featuring ATS resume analysis, smart job application tracker, interactive mock interviews, and DSA prep tracker.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

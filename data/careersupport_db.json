@@ -1,0 +1,996 @@
+{
+  "users": [
+    {
+      "id": "test-user-1791743384149",
+      "name": "Test Candidate",
+      "email": "candidate-1791743384158@test.edu",
+      "passwordHash": "dummy_hash",
+      "targetRole": "Software Engineer",
+      "experienceLevel": "Entry-Level",
+      "skills": [
+        "TypeScript",
+        "React"
+      ],
+      "education": "B.S. CS",
+      "createdAt": "2026-10-11T18:29:44.158Z",
+      "updatedAt": "2026-10-11T18:29:44.158Z"
+    },
+    {
+      "id": "usr-demo-student",
+      "name": "Alex Chen",
+      "email": "alex.chen@university.edu",
+      "passwordHash": "$2b$10$9DZPBY3hB7se.tOYl/JB6epuJYWPyhmq5UfO.14PSsszODCkriefW",
+      "targetRole": "Full-Stack Software Engineer",
+      "experienceLevel": "Entry-Level",
+      "skills": [
+        "TypeScript",
+        "React",
+        "Node.js",
+        "PostgreSQL",
+        "Python",
+        "Tailwind CSS",
+        "Docker",
+        "Git"
+      ],
+      "education": "B.S. in Computer Science, Expected May 2026",
+      "createdAt": "2026-10-11T18:30:28.987Z",
+      "updatedAt": "2026-10-11T18:30:28.987Z"
+    },
+    {
+      "id": "test-user-1791743437579",
+      "name": "Test Candidate",
+      "email": "candidate-1791743437589@test.edu",
+      "passwordHash": "dummy_hash",
+      "targetRole": "Software Engineer",
+      "experienceLevel": "Entry-Level",
+      "skills": [
+        "TypeScript",
+        "React"
+      ],
+      "education": "B.S. CS",
+      "createdAt": "2026-10-11T18:30:37.589Z",
+      "updatedAt": "2026-10-11T18:30:37.589Z"
+    },
+    {
+      "id": "test-user-1791744816013",
+      "name": "Test Candidate",
+      "email": "candidate-1791744816020@test.edu",
+      "passwordHash": "dummy_hash",
+      "targetRole": "Software Engineer",
+      "experienceLevel": "Entry-Level",
+      "skills": [
+        "TypeScript",
+        "React"
+      ],
+      "education": "B.S. CS",
+      "createdAt": "2026-10-11T18:53:36.020Z",
+      "updatedAt": "2026-10-11T18:53:36.021Z"
+    },
+    {
+      "id": "test-user-1791744872488",
+      "name": "Test Candidate",
+      "email": "candidate-1791744872496@test.edu",
+      "passwordHash": "dummy_hash",
+      "targetRole": "Software Engineer",
+      "experienceLevel": "Entry-Level",
+      "skills": [
+        "TypeScript",
+        "React"
+      ],
+      "education": "B.S. CS",
+      "createdAt": "2026-10-11T18:54:32.496Z",
+      "updatedAt": "2026-10-11T18:54:32.496Z"
+    },
+    {
+      "id": "test-user-1791745758171",
+      "name": "Test Candidate",
+      "email": "candidate-1791745758184@test.edu",
+      "passwordHash": "dummy_hash",
+      "targetRole": "Software Engineer",
+      "experienceLevel": "Entry-Level",
+      "skills": [
+        "TypeScript",
+        "React"
+      ],
+      "education": "B.S. CS",
+      "createdAt": "2026-10-11T19:09:18.184Z",
+      "updatedAt": "2026-10-11T19:09:18.184Z"
+    },
+    {
+      "id": "test-user-1791746036793",
+      "name": "Test Candidate",
+      "email": "candidate-1791746036801@test.edu",
+      "passwordHash": "dummy_hash",
+      "targetRole": "Software Engineer",
+      "experienceLevel": "Entry-Level",
+      "skills": [
+        "TypeScript",
+        "React"
+      ],
+      "education": "B.S. CS",
+      "createdAt": "2026-10-11T19:13:56.801Z",
+      "updatedAt": "2026-10-11T19:13:56.801Z"
+    },
+    {
+      "id": "test-user-1791746088917",
+      "name": "Test Candidate",
+      "email": "candidate-1791746088924@test.edu",
+      "passwordHash": "dummy_hash",
+      "targetRole": "Software Engineer",
+      "experienceLevel": "Entry-Level",
+      "skills": [
+        "TypeScript",
+        "React"
+      ],
+      "education": "B.S. CS",
+      "createdAt": "2026-10-11T19:14:48.924Z",
+      "updatedAt": "2026-10-11T19:14:48.924Z"
+    },
+    {
+      "id": "test-user-1791746611031",
+      "name": "Test Candidate",
+      "email": "candidate-1791746611038@test.edu",
+      "passwordHash": "dummy_hash",
+      "targetRole": "Software Engineer",
+      "experienceLevel": "Entry-Level",
+      "skills": [
+        "TypeScript",
+        "React"
+      ],
+      "education": "B.S. CS",
+      "createdAt": "2026-10-11T19:23:31.038Z",
+      "updatedAt": "2026-10-11T19:23:31.038Z"
+    }
+  ],
+  "resumes": [
+    {
+      "id": "res-demo-1",
+      "userId": "usr-demo-student",
+      "fileName": "Alex_Chen_Software_Engineer_Resume.pdf",
+      "targetJobRole": "Full-Stack Software Engineer",
+      "targetJobDescription": "Seeking an entry-level engineer proficient in React, Node.js, RESTful APIs, and database modeling.",
+      "matchScore": 88,
+      "atsScore": 92,
+      "identifiedSkills": [
+        "React",
+        "TypeScript",
+        "Node.js",
+        "PostgreSQL",
+        "Git",
+        "REST APIs",
+        "Express",
+        "Tailwind CSS"
+      ],
+      "missingSkills": [
+        "Redis caching",
+        "Kubernetes",
+        "CI/CD Pipelines (GitHub Actions)"
+      ],
+      "strengths": [
+        "Excellent quantified metrics in project descriptions (e.g. reduced load times by 40%).",
+        "Clean standard single-column ATS layout with clear section headers.",
+        "Solid CS coursework and high GPA mentioned prominently."
+      ],
+      "weaknesses": [
+        "Summary statement is slightly generic; recommend targeting specific backend architecture skills.",
+        "Missing automated testing mentions (Jest, Vitest, Cypress)."
+      ],
+      "suggestedImprovements": [
+        "Add a specific testing framework to your skills list and mention test coverage percentage.",
+        "Clarify the concurrency model used in the collaborative whiteboard project.",
+        "Include links to live deployed demos alongside GitHub repositories."
+      ],
+      "keywordRecommendations": [
+        "Unit Testing",
+        "Vitest",
+        "GitHub Actions",
+        "Microservices",
+        "Database Indexing"
+      ],
+      "summary": "Alex presents a strong candidate profile with high ATS compliance and tangible technical contributions across full-stack web applications.",
+      "createdAt": "2026-10-06T18:30:28.989Z"
+    }
+  ],
+  "jobs": [
+    {
+      "id": "job-test-1791743384159",
+      "userId": "test-user-1791743384149",
+      "company": "TestCorp Technologies",
+      "role": "Junior Frontend Engineer",
+      "location": "Remote",
+      "status": "Interview",
+      "applicationDate": "2026-10-11",
+      "salary": "$120,000",
+      "notes": "Scheduled round 1",
+      "createdAt": "2026-10-11T18:29:44.159Z",
+      "updatedAt": "2026-10-11T18:29:44.162Z"
+    },
+    {
+      "id": "job-demo-1",
+      "userId": "usr-demo-student",
+      "company": "Stripe",
+      "role": "New Grad Software Engineer",
+      "location": "San Francisco, CA (Hybrid)",
+      "status": "Interview",
+      "applicationDate": "2026-09-27",
+      "salary": "$145,000 - $160,000",
+      "postingUrl": "https://stripe.com/jobs",
+      "notes": "Technical screen passed with positive feedback on concurrency question. Final round scheduled for next Thursday.",
+      "followUpDate": "2026-10-15",
+      "createdAt": "2026-10-11T18:30:28.988Z",
+      "updatedAt": "2026-10-11T18:30:28.988Z"
+    },
+    {
+      "id": "job-demo-2",
+      "userId": "usr-demo-student",
+      "company": "Figma",
+      "role": "Associate Software Engineer",
+      "location": "Remote",
+      "status": "Assessment",
+      "applicationDate": "2026-10-04",
+      "salary": "$140,000",
+      "postingUrl": "https://figma.com/careers",
+      "notes": "Received HackerRank online assessment (75 mins). Need to review 2D canvas and tree traversal.",
+      "followUpDate": "2026-10-13",
+      "createdAt": "2026-10-11T18:30:28.988Z",
+      "updatedAt": "2026-10-11T18:30:28.988Z"
+    },
+    {
+      "id": "job-demo-3",
+      "userId": "usr-demo-student",
+      "company": "Linear",
+      "role": "Frontend Engineer - Entry Level",
+      "location": "Remote / Hybrid",
+      "status": "Assessment",
+      "applicationDate": "2026-10-11",
+      "salary": "$135,000",
+      "notes": "Tailored resume emphasizing web performance, keyboard shortcuts, and state management.",
+      "createdAt": "2026-10-11T18:30:28.989Z",
+      "updatedAt": "2026-10-11T19:15:11.395Z"
+    },
+    {
+      "id": "job-demo-4",
+      "userId": "usr-demo-student",
+      "company": "Datadog",
+      "role": "Software Engineer - Infrastructure",
+      "location": "New York, NY",
+      "status": "Saved",
+      "applicationDate": "2026-10-11",
+      "salary": "$130,000",
+      "notes": "Connecting with campus alum on LinkedIn before submitting.",
+      "createdAt": "2026-10-11T18:30:28.989Z",
+      "updatedAt": "2026-10-11T18:30:28.989Z"
+    },
+    {
+      "id": "job-test-1791743437590",
+      "userId": "test-user-1791743437579",
+      "company": "TestCorp Technologies",
+      "role": "Junior Frontend Engineer",
+      "location": "Remote",
+      "status": "Interview",
+      "applicationDate": "2026-10-11",
+      "salary": "$120,000",
+      "notes": "Scheduled round 1",
+      "createdAt": "2026-10-11T18:30:37.590Z",
+      "updatedAt": "2026-10-11T18:30:37.592Z"
+    },
+    {
+      "id": "job-test-1791744816022",
+      "userId": "test-user-1791744816013",
+      "company": "TestCorp Technologies",
+      "role": "Junior Frontend Engineer",
+      "location": "Remote",
+      "status": "Interview",
+      "applicationDate": "2026-10-11",
+      "salary": "$120,000",
+      "notes": "Scheduled round 1",
+      "createdAt": "2026-10-11T18:53:36.022Z",
+      "updatedAt": "2026-10-11T18:53:36.024Z"
+    },
+    {
+      "id": "job-test-1791744872497",
+      "userId": "test-user-1791744872488",
+      "company": "TestCorp Technologies",
+      "role": "Junior Frontend Engineer",
+      "location": "Remote",
+      "status": "Interview",
+      "applicationDate": "2026-10-11",
+      "salary": "$120,000",
+      "notes": "Scheduled round 1",
+      "createdAt": "2026-10-11T18:54:32.497Z",
+      "updatedAt": "2026-10-11T18:54:32.500Z"
+    },
+    {
+      "id": "job-test-1791745758185",
+      "userId": "test-user-1791745758171",
+      "company": "TestCorp Technologies",
+      "role": "Junior Frontend Engineer",
+      "location": "Remote",
+      "status": "Interview",
+      "applicationDate": "2026-10-11",
+      "salary": "$120,000",
+      "notes": "Scheduled round 1",
+      "createdAt": "2026-10-11T19:09:18.185Z",
+      "updatedAt": "2026-10-11T19:09:18.188Z"
+    },
+    {
+      "id": "job-test-1791746036803",
+      "userId": "test-user-1791746036793",
+      "company": "TestCorp Technologies",
+      "role": "Junior Frontend Engineer",
+      "location": "Remote",
+      "status": "Interview",
+      "applicationDate": "2026-10-11",
+      "salary": "$120,000",
+      "notes": "Scheduled round 1",
+      "createdAt": "2026-10-11T19:13:56.803Z",
+      "updatedAt": "2026-10-11T19:13:56.805Z"
+    },
+    {
+      "id": "job-test-1791746088926",
+      "userId": "test-user-1791746088917",
+      "company": "TestCorp Technologies",
+      "role": "Junior Frontend Engineer",
+      "location": "Remote",
+      "status": "Interview",
+      "applicationDate": "2026-10-11",
+      "salary": "$120,000",
+      "notes": "Scheduled round 1",
+      "createdAt": "2026-10-11T19:14:48.926Z",
+      "updatedAt": "2026-10-11T19:14:48.928Z"
+    },
+    {
+      "id": "job-test-1791746611040",
+      "userId": "test-user-1791746611031",
+      "company": "TestCorp Technologies",
+      "role": "Junior Frontend Engineer",
+      "location": "Remote",
+      "status": "Interview",
+      "applicationDate": "2026-10-11",
+      "salary": "$120,000",
+      "notes": "Scheduled round 1",
+      "createdAt": "2026-10-11T19:23:31.040Z",
+      "updatedAt": "2026-10-11T19:23:31.042Z"
+    }
+  ],
+  "interviews": [
+    {
+      "id": "int-1791745724878-pijyt",
+      "userId": "usr-demo-student",
+      "targetRole": "Full-Stack Software Engineer",
+      "experienceLevel": "Entry-Level",
+      "category": "Technical",
+      "difficulty": "Medium",
+      "questionsCount": 3,
+      "status": "in_progress",
+      "questions": [
+        {
+          "id": "q-1-1791745724878",
+          "question": "You are building an auto-complete search bar in a single-page application that queries a backend API as the user types. How do you prevent race conditions where an earlier, slower network request resolves after a later request, displaying outdated results?",
+          "category": "Technical",
+          "expectedKeyPoints": [
+            "Implementing request cancellation using the AbortController API or equivalent cancellation mechanism in the client framework",
+            "Debouncing or throttling the input event to prevent firing an excessive volume of network requests",
+            "Tracking request timestamps or sequential IDs to discard responses that do not match the most recent query",
+            "Managing user-facing edge cases like network latency indicators and clearing results when input is erased"
+          ]
+        },
+        {
+          "id": "q-2-1791745724878",
+          "question": "When building a RESTful API endpoint to fetch a list of blog posts along with their author profiles using an ORM, you notice the response time degrades significantly as database rows grow. What causes the N+1 query problem in this context, and how would you resolve it?",
+          "category": "Technical",
+          "expectedKeyPoints": [
+            "Explaining that the N+1 problem occurs when an initial query fetches N records, followed by N distinct queries to fetch each related record",
+            "Resolving the issue through eager loading strategies using SQL JOINs or ORM-specific methods (such as select_related or include)",
+            "Implementing pagination (limit/offset or cursor-based) to prevent pulling the entire dataset into memory at once",
+            "Ensuring foreign keys and commonly filtered fields have appropriate indexes to speed up joined queries"
+          ]
+        },
+        {
+          "id": "q-3-1791745724878",
+          "question": "In a full-stack application, where should you store an authentication token on the client side, and what are the security trade-offs between using browser localStorage versus an HttpOnly cookie?",
+          "category": "Technical",
+          "expectedKeyPoints": [
+            "Identifying that localStorage is vulnerable to Cross-Site Scripting (XSS) because JavaScript can read the stored token directly",
+            "Explaining that HttpOnly cookies prevent JavaScript access, protecting against token theft via XSS, but introduce vulnerability to Cross-Site Request Forgery (CSRF)",
+            "Mitigating CSRF risks when using cookies through SameSite attributes (Strict or Lax) and anti-CSRF tokens",
+            "Describing the role of short-lived access tokens combined with a refresh token rotation strategy for balanced security"
+          ]
+        }
+      ],
+      "createdAt": "2026-10-11T19:08:44.878Z"
+    }
+  ],
+  "dsaProblems": [
+    {
+      "id": "dsa-1",
+      "title": "Two Sum",
+      "category": "Arrays & Hashing",
+      "difficulty": "Easy",
+      "leetcodeNumber": 1,
+      "practiceUrl": "https://leetcode.com/problems/two-sum/",
+      "pattern": "Hash Map Lookup"
+    },
+    {
+      "id": "dsa-2",
+      "title": "Valid Anagram",
+      "category": "Arrays & Hashing",
+      "difficulty": "Easy",
+      "leetcodeNumber": 242,
+      "practiceUrl": "https://leetcode.com/problems/valid-anagram/",
+      "pattern": "Frequency Counter"
+    },
+    {
+      "id": "dsa-3",
+      "title": "Group Anagrams",
+      "category": "Arrays & Hashing",
+      "difficulty": "Medium",
+      "leetcodeNumber": 49,
+      "practiceUrl": "https://leetcode.com/problems/group-anagrams/",
+      "pattern": "Categorization with Hash Table"
+    },
+    {
+      "id": "dsa-4",
+      "title": "Top K Frequent Elements",
+      "category": "Arrays & Hashing",
+      "difficulty": "Medium",
+      "leetcodeNumber": 347,
+      "practiceUrl": "https://leetcode.com/problems/top-k-frequent-elements/",
+      "pattern": "Bucket Sort / Min-Heap"
+    },
+    {
+      "id": "dsa-5",
+      "title": "Valid Palindrome",
+      "category": "Two Pointers",
+      "difficulty": "Easy",
+      "leetcodeNumber": 125,
+      "practiceUrl": "https://leetcode.com/problems/valid-palindrome/",
+      "pattern": "Converging Two Pointers"
+    },
+    {
+      "id": "dsa-6",
+      "title": "3Sum",
+      "category": "Two Pointers",
+      "difficulty": "Medium",
+      "leetcodeNumber": 15,
+      "practiceUrl": "https://leetcode.com/problems/3sum/",
+      "pattern": "Sorting + Two Pointers"
+    },
+    {
+      "id": "dsa-7",
+      "title": "Container With Most Water",
+      "category": "Two Pointers",
+      "difficulty": "Medium",
+      "leetcodeNumber": 11,
+      "practiceUrl": "https://leetcode.com/problems/container-with-most-water/",
+      "pattern": "Greedy Two Pointers"
+    },
+    {
+      "id": "dsa-8",
+      "title": "Best Time to Buy and Sell Stock",
+      "category": "Sliding Window",
+      "difficulty": "Easy",
+      "leetcodeNumber": 121,
+      "practiceUrl": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
+      "pattern": "Track Running Minimum"
+    },
+    {
+      "id": "dsa-9",
+      "title": "Longest Substring Without Repeating Characters",
+      "category": "Sliding Window",
+      "difficulty": "Medium",
+      "leetcodeNumber": 3,
+      "practiceUrl": "https://leetcode.com/problems/longest-substring-without-repeating-characters/",
+      "pattern": "Dynamic Sliding Window"
+    },
+    {
+      "id": "dsa-10",
+      "title": "Valid Parentheses",
+      "category": "Stack & Queue",
+      "difficulty": "Easy",
+      "leetcodeNumber": 20,
+      "practiceUrl": "https://leetcode.com/problems/valid-parentheses/",
+      "pattern": "LIFO Stack Matching"
+    },
+    {
+      "id": "dsa-11",
+      "title": "Min Stack",
+      "category": "Stack & Queue",
+      "difficulty": "Medium",
+      "leetcodeNumber": 155,
+      "practiceUrl": "https://leetcode.com/problems/min-stack/",
+      "pattern": "Auxiliary Stack"
+    },
+    {
+      "id": "dsa-12",
+      "title": "Binary Search",
+      "category": "Binary Search",
+      "difficulty": "Easy",
+      "leetcodeNumber": 704,
+      "practiceUrl": "https://leetcode.com/problems/binary-search/",
+      "pattern": "Search Space Halving"
+    },
+    {
+      "id": "dsa-13",
+      "title": "Search in Rotated Sorted Array",
+      "category": "Binary Search",
+      "difficulty": "Medium",
+      "leetcodeNumber": 33,
+      "practiceUrl": "https://leetcode.com/problems/search-in-rotated-sorted-array/",
+      "pattern": "Modified Binary Search"
+    },
+    {
+      "id": "dsa-14",
+      "title": "Reverse Linked List",
+      "category": "Linked List",
+      "difficulty": "Easy",
+      "leetcodeNumber": 206,
+      "practiceUrl": "https://leetcode.com/problems/reverse-linked-list/",
+      "pattern": "Three Pointers (Prev, Curr, Next)"
+    },
+    {
+      "id": "dsa-15",
+      "title": "Merge Two Sorted Lists",
+      "category": "Linked List",
+      "difficulty": "Easy",
+      "leetcodeNumber": 21,
+      "practiceUrl": "https://leetcode.com/problems/merge-two-sorted-lists/",
+      "pattern": "Dummy Head Pointer"
+    },
+    {
+      "id": "dsa-16",
+      "title": "Linked List Cycle",
+      "category": "Linked List",
+      "difficulty": "Easy",
+      "leetcodeNumber": 141,
+      "practiceUrl": "https://leetcode.com/problems/linked-list-cycle/",
+      "pattern": "Floyd's Fast & Slow Pointers"
+    },
+    {
+      "id": "dsa-17",
+      "title": "Maximum Depth of Binary Tree",
+      "category": "Trees & BST",
+      "difficulty": "Easy",
+      "leetcodeNumber": 104,
+      "practiceUrl": "https://leetcode.com/problems/maximum-depth-of-binary-tree/",
+      "pattern": "Recursive DFS"
+    },
+    {
+      "id": "dsa-18",
+      "title": "Invert Binary Tree",
+      "category": "Trees & BST",
+      "difficulty": "Easy",
+      "leetcodeNumber": 226,
+      "practiceUrl": "https://leetcode.com/problems/invert-binary-tree/",
+      "pattern": "Tree Traversal & Swap"
+    },
+    {
+      "id": "dsa-19",
+      "title": "Validate Binary Search Tree",
+      "category": "Trees & BST",
+      "difficulty": "Medium",
+      "leetcodeNumber": 98,
+      "practiceUrl": "https://leetcode.com/problems/validate-binary-search-tree/",
+      "pattern": "Bounded Inorder DFS"
+    },
+    {
+      "id": "dsa-20",
+      "title": "Lowest Common Ancestor of a BST",
+      "category": "Trees & BST",
+      "difficulty": "Medium",
+      "leetcodeNumber": 235,
+      "practiceUrl": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/",
+      "pattern": "BST Value Traversal"
+    },
+    {
+      "id": "dsa-21",
+      "title": "Number of Islands",
+      "category": "Graphs",
+      "difficulty": "Medium",
+      "leetcodeNumber": 200,
+      "practiceUrl": "https://leetcode.com/problems/number-of-islands/",
+      "pattern": "2D Grid BFS / DFS"
+    },
+    {
+      "id": "dsa-22",
+      "title": "Clone Graph",
+      "category": "Graphs",
+      "difficulty": "Medium",
+      "leetcodeNumber": 133,
+      "practiceUrl": "https://leetcode.com/problems/clone-graph/",
+      "pattern": "DFS with Visited Hash Map"
+    },
+    {
+      "id": "dsa-23",
+      "title": "Climbing Stairs",
+      "category": "Dynamic Programming",
+      "difficulty": "Easy",
+      "leetcodeNumber": 70,
+      "practiceUrl": "https://leetcode.com/problems/climbing-stairs/",
+      "pattern": "Fibonacci Recurrence"
+    },
+    {
+      "id": "dsa-24",
+      "title": "Coin Change",
+      "category": "Dynamic Programming",
+      "difficulty": "Medium",
+      "leetcodeNumber": 322,
+      "practiceUrl": "https://leetcode.com/problems/coin-change/",
+      "pattern": "Bottom-up Unbounded Knapsack"
+    },
+    {
+      "id": "dsa-25",
+      "title": "Longest Increasing Subsequence",
+      "category": "Dynamic Programming",
+      "difficulty": "Medium",
+      "leetcodeNumber": 300,
+      "practiceUrl": "https://leetcode.com/problems/longest-increasing-subsequence/",
+      "pattern": "1D DP or Patience Sorting"
+    }
+  ],
+  "dsaProgress": [
+    {
+      "id": "prog-1791743384164-513kn",
+      "userId": "test-user-1791743384149",
+      "problemId": "dsa-1",
+      "status": "Solved",
+      "notes": "Solved using hash map in O(N) time and O(N) space.",
+      "isBookmarked": true,
+      "solvedAt": "2026-10-11T18:29:44.164Z",
+      "updatedAt": "2026-10-11T18:29:44.164Z"
+    },
+    {
+      "id": "prog-1791743428989-lmoy5",
+      "userId": "usr-demo-student",
+      "problemId": "dsa-1",
+      "status": "Solved",
+      "notes": "Classic two pointer or hash map complement lookup. O(N) time and O(N) space.",
+      "isBookmarked": false,
+      "solvedAt": "2026-10-11T18:30:28.989Z",
+      "updatedAt": "2026-10-11T18:30:28.989Z"
+    },
+    {
+      "id": "prog-1791743428990-fq9wh",
+      "userId": "usr-demo-student",
+      "problemId": "dsa-2",
+      "status": "Solved",
+      "notes": "Character frequency array of size 26 works in O(N).",
+      "isBookmarked": false,
+      "solvedAt": "2026-10-11T18:30:28.990Z",
+      "updatedAt": "2026-10-11T18:30:28.990Z"
+    },
+    {
+      "id": "prog-1791743428990-5hqol",
+      "userId": "usr-demo-student",
+      "problemId": "dsa-5",
+      "status": "Solved",
+      "notes": "Two pointers skipping non-alphanumeric chars.",
+      "isBookmarked": false,
+      "solvedAt": "2026-10-11T18:30:28.990Z",
+      "updatedAt": "2026-10-11T18:30:28.990Z"
+    },
+    {
+      "id": "prog-1791743428990-tqmph",
+      "userId": "usr-demo-student",
+      "problemId": "dsa-10",
+      "status": "Solved",
+      "notes": "Stack matching for brackets.",
+      "isBookmarked": false,
+      "solvedAt": "2026-10-11T18:30:28.990Z",
+      "updatedAt": "2026-10-11T18:30:28.990Z"
+    },
+    {
+      "id": "prog-1791743428990-mlyw2",
+      "userId": "usr-demo-student",
+      "problemId": "dsa-8",
+      "status": "Solved",
+      "notes": "Keep minimum buy price seen so far.",
+      "isBookmarked": false,
+      "solvedAt": "2026-10-11T18:30:28.990Z",
+      "updatedAt": "2026-10-11T18:30:28.990Z"
+    },
+    {
+      "id": "prog-1791743428990-2cyc9",
+      "userId": "usr-demo-student",
+      "problemId": "dsa-3",
+      "status": "In Progress",
+      "notes": "Sorting each string vs tuple count signature.",
+      "isBookmarked": false,
+      "updatedAt": "2026-10-11T18:30:28.990Z"
+    },
+    {
+      "id": "prog-1791743437594-owe9q",
+      "userId": "test-user-1791743437579",
+      "problemId": "dsa-1",
+      "status": "Solved",
+      "notes": "Solved using hash map in O(N) time and O(N) space.",
+      "isBookmarked": true,
+      "solvedAt": "2026-10-11T18:30:37.594Z",
+      "updatedAt": "2026-10-11T18:30:37.594Z"
+    },
+    {
+      "id": "prog-1791744816026-l85nq",
+      "userId": "test-user-1791744816013",
+      "problemId": "dsa-1",
+      "status": "Solved",
+      "notes": "Solved using hash map in O(N) time and O(N) space.",
+      "isBookmarked": true,
+      "solvedAt": "2026-10-11T18:53:36.026Z",
+      "updatedAt": "2026-10-11T18:53:36.026Z"
+    },
+    {
+      "id": "prog-1791744872502-yf7cy",
+      "userId": "test-user-1791744872488",
+      "problemId": "dsa-1",
+      "status": "Solved",
+      "notes": "Solved using hash map in O(N) time and O(N) space.",
+      "isBookmarked": true,
+      "solvedAt": "2026-10-11T18:54:32.502Z",
+      "updatedAt": "2026-10-11T18:54:32.502Z"
+    },
+    {
+      "id": "prog-1791745758190-weviy",
+      "userId": "test-user-1791745758171",
+      "problemId": "dsa-1",
+      "status": "Solved",
+      "notes": "Solved using hash map in O(N) time and O(N) space.",
+      "isBookmarked": true,
+      "solvedAt": "2026-10-11T19:09:18.190Z",
+      "updatedAt": "2026-10-11T19:09:18.190Z"
+    },
+    {
+      "id": "prog-1791746036808-chey3",
+      "userId": "test-user-1791746036793",
+      "problemId": "dsa-1",
+      "status": "Solved",
+      "notes": "Solved using hash map in O(N) time and O(N) space.",
+      "isBookmarked": true,
+      "solvedAt": "2026-10-11T19:13:56.808Z",
+      "updatedAt": "2026-10-11T19:13:56.808Z"
+    },
+    {
+      "id": "prog-1791746088930-egu86",
+      "userId": "test-user-1791746088917",
+      "problemId": "dsa-1",
+      "status": "Solved",
+      "notes": "Solved using hash map in O(N) time and O(N) space.",
+      "isBookmarked": true,
+      "solvedAt": "2026-10-11T19:14:48.930Z",
+      "updatedAt": "2026-10-11T19:14:48.930Z"
+    },
+    {
+      "id": "prog-1791746611044-jy54w",
+      "userId": "test-user-1791746611031",
+      "problemId": "dsa-1",
+      "status": "Solved",
+      "notes": "Solved using hash map in O(N) time and O(N) space.",
+      "isBookmarked": true,
+      "solvedAt": "2026-10-11T19:23:31.044Z",
+      "updatedAt": "2026-10-11T19:23:31.044Z"
+    }
+  ],
+  "activities": [
+    {
+      "id": "act-1791746611047-fksvy",
+      "userId": "test-user-1791746611031",
+      "action": "interview_completed",
+      "title": "Interview completed",
+      "description": "Completed Technical mock interview with 92% score",
+      "type": "interview",
+      "timestamp": "2026-10-10T14:00:00.000Z"
+    },
+    {
+      "id": "act-1791746611046-s4gs5",
+      "userId": "test-user-1791746611031",
+      "action": "application_status_changed",
+      "title": "Application status changed",
+      "description": "Google application advanced to Interview stage",
+      "type": "job",
+      "timestamp": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "id": "act-1791746611046-p09gb",
+      "userId": "test-user-1791746611031",
+      "action": "resume_uploaded",
+      "title": "Resume uploaded",
+      "description": "Uploaded Software_Engineer_Resume.pdf (ATS Score: 90%)",
+      "type": "resume",
+      "timestamp": "2026-10-10T10:00:00.000Z"
+    },
+    {
+      "id": "act-1791746111396-sippy",
+      "userId": "usr-demo-student",
+      "action": "application_status_changed",
+      "title": "Application status changed",
+      "description": "Linear (Frontend Engineer - Entry Level) updated from Applied → Assessment",
+      "type": "job",
+      "metadata": {
+        "jobId": "job-demo-3",
+        "company": "Linear",
+        "previousStatus": "Applied",
+        "newStatus": "Assessment"
+      },
+      "timestamp": "2026-10-11T19:15:11.396Z"
+    },
+    {
+      "id": "act-1791746088933-8v8yc",
+      "userId": "test-user-1791746088917",
+      "action": "interview_completed",
+      "title": "Interview completed",
+      "description": "Completed Technical mock interview with 92% score",
+      "type": "interview",
+      "timestamp": "2026-10-10T14:00:00.000Z"
+    },
+    {
+      "id": "act-1791746088933-ouef7",
+      "userId": "test-user-1791746088917",
+      "action": "application_status_changed",
+      "title": "Application status changed",
+      "description": "Google application advanced to Interview stage",
+      "type": "job",
+      "timestamp": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "id": "act-1791746088933-yc4jw",
+      "userId": "test-user-1791746088917",
+      "action": "resume_uploaded",
+      "title": "Resume uploaded",
+      "description": "Uploaded Software_Engineer_Resume.pdf (ATS Score: 90%)",
+      "type": "resume",
+      "timestamp": "2026-10-10T10:00:00.000Z"
+    },
+    {
+      "id": "act-1791746036811-wld1z",
+      "userId": "test-user-1791746036793",
+      "action": "interview_completed",
+      "title": "Interview completed",
+      "description": "Completed Technical mock interview with 92% score",
+      "type": "interview",
+      "timestamp": "2026-10-10T14:00:00.000Z"
+    },
+    {
+      "id": "act-1791746036810-tb4aw",
+      "userId": "test-user-1791746036793",
+      "action": "application_status_changed",
+      "title": "Application status changed",
+      "description": "Google application advanced to Interview stage",
+      "type": "job",
+      "timestamp": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "id": "act-1791746036810-hzkvq",
+      "userId": "test-user-1791746036793",
+      "action": "resume_uploaded",
+      "title": "Resume uploaded",
+      "description": "Uploaded Software_Engineer_Resume.pdf (ATS Score: 90%)",
+      "type": "resume",
+      "timestamp": "2026-10-10T10:00:00.000Z"
+    },
+    {
+      "id": "act-1791745758192-gymqt",
+      "userId": "test-user-1791745758171",
+      "action": "interview_completed",
+      "title": "Interview completed",
+      "description": "Completed Technical mock interview with 92% score",
+      "type": "interview",
+      "timestamp": "2026-10-10T14:00:00.000Z"
+    },
+    {
+      "id": "act-1791745758192-itwz2",
+      "userId": "test-user-1791745758171",
+      "action": "application_status_changed",
+      "title": "Application status changed",
+      "description": "Google application advanced to Interview stage",
+      "type": "job",
+      "timestamp": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "id": "act-1791745758191-tf72q",
+      "userId": "test-user-1791745758171",
+      "action": "resume_uploaded",
+      "title": "Resume uploaded",
+      "description": "Uploaded Software_Engineer_Resume.pdf (ATS Score: 90%)",
+      "type": "resume",
+      "timestamp": "2026-10-10T10:00:00.000Z"
+    },
+    {
+      "id": "act-1791744872504-1f4hh",
+      "userId": "test-user-1791744872488",
+      "action": "interview_completed",
+      "title": "Interview completed",
+      "description": "Completed Technical mock interview with 92% score",
+      "type": "interview",
+      "timestamp": "2026-10-10T14:00:00.000Z"
+    },
+    {
+      "id": "act-1791744872504-s3ub2",
+      "userId": "test-user-1791744872488",
+      "action": "application_status_changed",
+      "title": "Application status changed",
+      "description": "Google application advanced to Interview stage",
+      "type": "job",
+      "timestamp": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "id": "act-1791744872503-01zez",
+      "userId": "test-user-1791744872488",
+      "action": "resume_uploaded",
+      "title": "Resume uploaded",
+      "description": "Uploaded Software_Engineer_Resume.pdf (ATS Score: 90%)",
+      "type": "resume",
+      "timestamp": "2026-10-10T10:00:00.000Z"
+    },
+    {
+      "id": "act-1791744865430-caa5w",
+      "userId": "usr-demo-student",
+      "action": "dsa_solved",
+      "title": "DSA problem solved",
+      "description": "Solved Two Sum (#1) using Hash Map complement approach in O(N)",
+      "type": "dsa",
+      "timestamp": "2026-10-07T18:54:25.430Z"
+    },
+    {
+      "id": "act-1791744865429-qzsjv",
+      "userId": "usr-demo-student",
+      "action": "resume_uploaded",
+      "title": "Resume uploaded",
+      "description": "Uploaded Alex_Chen_Software_Engineer_Resume.pdf (ATS Score: 92%, Match: 88%)",
+      "type": "resume",
+      "timestamp": "2026-10-08T18:54:25.429Z"
+    },
+    {
+      "id": "act-1791744865429-xnief",
+      "userId": "usr-demo-student",
+      "action": "application_status_changed",
+      "title": "Application status changed",
+      "description": "Figma application moved to Assessment stage (75 mins OA)",
+      "type": "job",
+      "timestamp": "2026-10-10T06:54:25.429Z"
+    },
+    {
+      "id": "act-1791744865429-jltff",
+      "userId": "usr-demo-student",
+      "action": "application_status_changed",
+      "title": "Application status changed",
+      "description": "Stripe application moved from Assessment → Interview stage",
+      "type": "job",
+      "timestamp": "2026-10-11T04:54:25.429Z"
+    },
+    {
+      "id": "act-1791744865429-r20xu",
+      "userId": "usr-demo-student",
+      "action": "interview_completed",
+      "title": "Interview completed",
+      "description": "Completed Technical interview round with 88% overall score",
+      "type": "interview",
+      "timestamp": "2026-10-11T16:54:25.428Z"
+    },
+    {
+      "id": "act-1791744816028-8op17",
+      "userId": "test-user-1791744816013",
+      "action": "interview_completed",
+      "title": "Interview completed",
+      "description": "Completed Technical mock interview with 92% score",
+      "type": "interview",
+      "timestamp": "2026-10-10T14:00:00.000Z"
+    },
+    {
+      "id": "act-1791744816027-3k6sl",
+      "userId": "test-user-1791744816013",
+      "action": "application_status_changed",
+      "title": "Application status changed",
+      "description": "Google application advanced to Interview stage",
+      "type": "job",
+      "timestamp": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "id": "act-1791744816027-i1sdn",
+      "userId": "test-user-1791744816013",
+      "action": "resume_uploaded",
+      "title": "Resume uploaded",
+      "description": "Uploaded Software_Engineer_Resume.pdf (ATS Score: 90%)",
+      "type": "resume",
+      "timestamp": "2026-10-10T10:00:00.000Z"
+    }
+  ]
+}
