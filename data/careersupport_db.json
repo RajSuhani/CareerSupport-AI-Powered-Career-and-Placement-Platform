@@ -140,6 +140,126 @@
       "education": "B.S. CS",
       "createdAt": "2026-10-11T19:23:31.038Z",
       "updatedAt": "2026-10-11T19:23:31.038Z"
+    },
+    {
+      "id": "test-user-1791823073833",
+      "name": "Test Candidate",
+      "email": "candidate-1791823073840@test.edu",
+      "passwordHash": "dummy_hash",
+      "targetRole": "Software Engineer",
+      "experienceLevel": "Entry-Level",
+      "skills": [
+        "TypeScript",
+        "React"
+      ],
+      "education": "B.S. CS",
+      "createdAt": "2026-10-12T16:37:53.840Z",
+      "updatedAt": "2026-10-12T16:37:53.841Z"
+    },
+    {
+      "id": "test-user-1791823817559",
+      "name": "Test Candidate",
+      "email": "candidate-1791823817566@test.edu",
+      "passwordHash": "dummy_hash",
+      "targetRole": "Software Engineer",
+      "experienceLevel": "Entry-Level",
+      "skills": [
+        "TypeScript",
+        "React"
+      ],
+      "education": "B.S. CS",
+      "createdAt": "2026-10-12T16:50:17.566Z",
+      "updatedAt": "2026-10-12T16:50:17.566Z"
+    },
+    {
+      "id": "test-user-1791823833227",
+      "name": "Test Candidate",
+      "email": "candidate-1791823833234@test.edu",
+      "passwordHash": "dummy_hash",
+      "targetRole": "Software Engineer",
+      "experienceLevel": "Entry-Level",
+      "skills": [
+        "TypeScript",
+        "React"
+      ],
+      "education": "B.S. CS",
+      "createdAt": "2026-10-12T16:50:33.234Z",
+      "updatedAt": "2026-10-12T16:50:33.234Z"
+    },
+    {
+      "id": "test-user-1791823853275",
+      "name": "Test Candidate",
+      "email": "candidate-1791823853288@test.edu",
+      "passwordHash": "dummy_hash",
+      "targetRole": "Software Engineer",
+      "experienceLevel": "Entry-Level",
+      "skills": [
+        "TypeScript",
+        "React"
+      ],
+      "education": "B.S. CS",
+      "createdAt": "2026-10-12T16:50:53.288Z",
+      "updatedAt": "2026-10-12T16:50:53.288Z"
+    },
+    {
+      "id": "test-user-1791823880526",
+      "name": "Test Candidate",
+      "email": "candidate-1791823880534@test.edu",
+      "passwordHash": "dummy_hash",
+      "targetRole": "Software Engineer",
+      "experienceLevel": "Entry-Level",
+      "skills": [
+        "TypeScript",
+        "React"
+      ],
+      "education": "B.S. CS",
+      "createdAt": "2026-10-12T16:51:20.534Z",
+      "updatedAt": "2026-10-12T16:51:20.534Z"
+    },
+    {
+      "id": "test-user-1791827421077",
+      "name": "Test Candidate",
+      "email": "candidate-1791827421084@test.edu",
+      "passwordHash": "dummy_hash",
+      "targetRole": "Software Engineer",
+      "experienceLevel": "Entry-Level",
+      "skills": [
+        "TypeScript",
+        "React"
+      ],
+      "education": "B.S. CS",
+      "createdAt": "2026-10-12T17:50:21.084Z",
+      "updatedAt": "2026-10-12T17:50:21.085Z"
+    },
+    {
+      "id": "test-user-1791835660501",
+      "name": "Test Candidate",
+      "email": "candidate-1791835660508@test.edu",
+      "passwordHash": "dummy_hash",
+      "targetRole": "Software Engineer",
+      "experienceLevel": "Entry-Level",
+      "skills": [
+        "TypeScript",
+        "React"
+      ],
+      "education": "B.S. CS",
+      "createdAt": "2026-10-12T20:07:40.508Z",
+      "updatedAt": "2026-10-12T20:07:40.508Z"
+    },
+    {
+      "id": "test-user-1791835890392",
+      "name": "Test Candidate",
+      "email": "candidate-1791835890404@test.edu",
+      "passwordHash": "dummy_hash",
+      "targetRole": "Software Engineer",
+      "experienceLevel": "Entry-Level",
+      "skills": [
+        "TypeScript",
+        "React"
+      ],
+      "education": "B.S. CS",
+      "createdAt": "2026-10-12T20:11:30.404Z",
+      "updatedAt": "2026-10-12T20:11:30.405Z"
     }
   ],
   "resumes": [
@@ -351,6 +471,123 @@
       "notes": "Scheduled round 1",
       "createdAt": "2026-10-11T19:23:31.040Z",
       "updatedAt": "2026-10-11T19:23:31.042Z"
+    },
+    {
+      "id": "job-test-1791823073842",
+      "userId": "test-user-1791823073833",
+      "company": "TestCorp Technologies",
+      "role": "Junior Frontend Engineer",
+      "location": "Remote",
+      "status": "Interview",
+      "applicationDate": "2026-10-11",
+      "salary": "$120,000",
+      "notes": "Scheduled round 1",
+      "createdAt": "2026-10-12T16:37:53.842Z",
+      "updatedAt": "2026-10-12T16:37:53.844Z"
+    },
+    {
+      "id": "job-test-1791823817567",
+      "userId": "test-user-1791823817559",
+      "company": "TestCorp Technologies",
+      "role": "Junior Frontend Engineer",
+      "location": "Remote",
+      "status": "Interview",
+      "applicationDate": "2026-10-11",
+      "salary": "$120,000",
+      "notes": "Scheduled round 1",
+      "createdAt": "2026-10-12T16:50:17.567Z",
+      "updatedAt": "2026-10-12T16:50:17.570Z"
+    },
+    {
+      "id": "job-test-1791823833236",
+      "userId": "test-user-1791823833227",
+      "company": "TestCorp Technologies",
+      "role": "Junior Frontend Engineer",
+      "location": "Remote",
+      "status": "Interview",
+      "applicationDate": "2026-10-11",
+      "salary": "$120,000",
+      "notes": "Scheduled round 1",
+      "createdAt": "2026-10-12T16:50:33.236Z",
+      "updatedAt": "2026-10-12T16:50:33.238Z"
+    },
+    {
+      "id": "job-test-1791823853290",
+      "userId": "test-user-1791823853275",
+      "company": "TestCorp Technologies",
+      "role": "Junior Frontend Engineer",
+      "location": "Remote",
+      "status": "Interview",
+      "applicationDate": "2026-10-11",
+      "salary": "$120,000",
+      "notes": "Scheduled round 1",
+      "createdAt": "2026-10-12T16:50:53.290Z",
+      "updatedAt": "2026-10-12T16:50:53.292Z"
+    },
+    {
+      "id": "job-test-1791823880535",
+      "userId": "test-user-1791823880526",
+      "company": "TestCorp Technologies",
+      "role": "Junior Frontend Engineer",
+      "location": "Remote",
+      "status": "Interview",
+      "applicationDate": "2026-10-11",
+      "salary": "$120,000",
+      "notes": "Scheduled round 1",
+      "createdAt": "2026-10-12T16:51:20.535Z",
+      "updatedAt": "2026-10-12T16:51:20.538Z"
+    },
+    {
+      "id": "job-test-1791827388109",
+      "userId": "test-user-1791827388100",
+      "company": "TestCorp Technologies",
+      "role": "Junior Frontend Engineer",
+      "location": "Remote",
+      "status": "Applied",
+      "applicationDate": "2026-10-11",
+      "salary": "$120,000",
+      "notes": "Applied via referral",
+      "createdAt": "2026-10-12T17:49:48.109Z",
+      "updatedAt": "2026-10-12T17:49:48.109Z"
+    },
+    {
+      "id": "job-test-1791827421086",
+      "userId": "test-user-1791827421077",
+      "company": "TestCorp Technologies",
+      "role": "Junior Frontend Engineer",
+      "location": "Remote",
+      "status": "Interview",
+      "applicationDate": "2026-10-11",
+      "salary": "$120,000",
+      "notes": "Scheduled round 1",
+      "createdAt": "2026-10-12T17:50:21.086Z",
+      "updatedAt": "2026-10-12T17:50:21.088Z"
+    },
+    {
+      "id": "job-test-1791835660510",
+      "userId": "test-user-1791835660501",
+      "company": "TestCorp Technologies",
+      "role": "Junior Frontend Engineer",
+      "location": "Remote",
+      "status": "Interview",
+      "applicationDate": "2026-10-11",
+      "salary": "$120,000",
+      "notes": "Scheduled round 1",
+      "createdAt": "2026-10-12T20:07:40.510Z",
+      "updatedAt": "2026-10-12T20:07:40.513Z"
+    },
+    {
+      "id": "job-test-1791835890406",
+      "userId": "test-user-1791835890392",
+      "company": "TestCorp Technologies",
+      "role": "Junior Frontend Engineer",
+      "location": "Remote",
+      "status": "Interview",
+      "applicationDate": "2026-10-11",
+      "salary": "$120,000",
+      "notes": "Scheduled round 1",
+      "createdAt": "2026-10-12T20:11:30.406Z",
+      "updatedAt": "2026-10-12T20:11:30.408Z"
     }
   ],
   "interviews": [
@@ -767,9 +1004,342 @@
       "isBookmarked": true,
       "solvedAt": "2026-10-11T19:23:31.044Z",
       "updatedAt": "2026-10-11T19:23:31.044Z"
+    },
+    {
+      "id": "prog-1791823073846-gw2sl",
+      "userId": "test-user-1791823073833",
+      "problemId": "dsa-1",
+      "status": "Solved",
+      "notes": "Solved using hash map in O(N) time and O(N) space.",
+      "isBookmarked": true,
+      "solvedAt": "2026-10-12T16:37:53.846Z",
+      "updatedAt": "2026-10-12T16:37:53.846Z"
+    },
+    {
+      "id": "prog-1791823817574-yg1tf",
+      "userId": "test-user-1791823817559",
+      "problemId": "dsa-1",
+      "status": "Solved",
+      "notes": "Solved using hash map in O(N) time and O(N) space.",
+      "isBookmarked": true,
+      "solvedAt": "2026-10-12T16:50:17.574Z",
+      "updatedAt": "2026-10-12T16:50:17.574Z"
+    },
+    {
+      "id": "prog-1791823833240-3zyu5",
+      "userId": "test-user-1791823833227",
+      "problemId": "dsa-1",
+      "status": "Solved",
+      "notes": "Solved using hash map in O(N) time and O(N) space.",
+      "isBookmarked": true,
+      "solvedAt": "2026-10-12T16:50:33.240Z",
+      "updatedAt": "2026-10-12T16:50:33.240Z"
+    },
+    {
+      "id": "prog-1791823853295-p4kl1",
+      "userId": "test-user-1791823853275",
+      "problemId": "dsa-1",
+      "status": "Solved",
+      "notes": "Solved using hash map in O(N) time and O(N) space.",
+      "isBookmarked": true,
+      "solvedAt": "2026-10-12T16:50:53.295Z",
+      "updatedAt": "2026-10-12T16:50:53.295Z"
+    },
+    {
+      "id": "prog-1791823880540-d23do",
+      "userId": "test-user-1791823880526",
+      "problemId": "dsa-1",
+      "status": "Solved",
+      "notes": "Solved using hash map in O(N) time and O(N) space.",
+      "isBookmarked": true,
+      "solvedAt": "2026-10-12T16:51:20.540Z",
+      "updatedAt": "2026-10-12T16:51:20.540Z"
+    },
+    {
+      "id": "prog-1791827388126-5k285",
+      "userId": "test-user-1791827388100",
+      "problemId": "dsa-1",
+      "status": "Solved",
+      "notes": "Solved using hash map in O(N) time and O(N) space.",
+      "isBookmarked": true,
+      "solvedAt": "2026-10-12T17:49:48.126Z",
+      "updatedAt": "2026-10-12T17:49:48.126Z"
+    },
+    {
+      "id": "prog-1791827421091-why0x",
+      "userId": "test-user-1791827421077",
+      "problemId": "dsa-1",
+      "status": "Solved",
+      "notes": "Solved using hash map in O(N) time and O(N) space.",
+      "isBookmarked": true,
+      "solvedAt": "2026-10-12T17:50:21.091Z",
+      "updatedAt": "2026-10-12T17:50:21.091Z"
+    },
+    {
+      "id": "prog-1791835660515-wubj3",
+      "userId": "test-user-1791835660501",
+      "problemId": "dsa-1",
+      "status": "Solved",
+      "notes": "Solved using hash map in O(N) time and O(N) space.",
+      "isBookmarked": true,
+      "solvedAt": "2026-10-12T20:07:40.515Z",
+      "updatedAt": "2026-10-12T20:07:40.515Z"
+    },
+    {
+      "id": "prog-1791835890411-ygg0s",
+      "userId": "test-user-1791835890392",
+      "problemId": "dsa-1",
+      "status": "Solved",
+      "notes": "Solved using hash map in O(N) time and O(N) space.",
+      "isBookmarked": true,
+      "solvedAt": "2026-10-12T20:11:30.411Z",
+      "updatedAt": "2026-10-12T20:11:30.411Z"
     }
   ],
   "activities": [
+    {
+      "id": "act-1791835890413-30u6k",
+      "userId": "test-user-1791835890392",
+      "action": "interview_completed",
+      "title": "Interview completed",
+      "description": "Completed Technical mock interview with 92% score",
+      "type": "interview",
+      "timestamp": "2026-10-10T14:00:00.000Z"
+    },
+    {
+      "id": "act-1791835890413-1bov8",
+      "userId": "test-user-1791835890392",
+      "action": "application_status_changed",
+      "title": "Application status changed",
+      "description": "Google application advanced to Interview stage",
+      "type": "job",
+      "timestamp": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "id": "act-1791835890412-fqzk0",
+      "userId": "test-user-1791835890392",
+      "action": "resume_uploaded",
+      "title": "Resume uploaded",
+      "description": "Uploaded Software_Engineer_Resume.pdf (ATS Score: 90%)",
+      "type": "resume",
+      "timestamp": "2026-10-10T10:00:00.000Z"
+    },
+    {
+      "id": "act-1791835660518-irume",
+      "userId": "test-user-1791835660501",
+      "action": "interview_completed",
+      "title": "Interview completed",
+      "description": "Completed Technical mock interview with 92% score",
+      "type": "interview",
+      "timestamp": "2026-10-10T14:00:00.000Z"
+    },
+    {
+      "id": "act-1791835660518-cwfxw",
+      "userId": "test-user-1791835660501",
+      "action": "application_status_changed",
+      "title": "Application status changed",
+      "description": "Google application advanced to Interview stage",
+      "type": "job",
+      "timestamp": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "id": "act-1791835660517-nmanf",
+      "userId": "test-user-1791835660501",
+      "action": "resume_uploaded",
+      "title": "Resume uploaded",
+      "description": "Uploaded Software_Engineer_Resume.pdf (ATS Score: 90%)",
+      "type": "resume",
+      "timestamp": "2026-10-10T10:00:00.000Z"
+    },
+    {
+      "id": "act-1791827421094-e4ggc",
+      "userId": "test-user-1791827421077",
+      "action": "interview_completed",
+      "title": "Interview completed",
+      "description": "Completed Technical mock interview with 92% score",
+      "type": "interview",
+      "timestamp": "2026-10-10T14:00:00.000Z"
+    },
+    {
+      "id": "act-1791827421094-emmzt",
+      "userId": "test-user-1791827421077",
+      "action": "application_status_changed",
+      "title": "Application status changed",
+      "description": "Google application advanced to Interview stage",
+      "type": "job",
+      "timestamp": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "id": "act-1791827421093-kcufd",
+      "userId": "test-user-1791827421077",
+      "action": "resume_uploaded",
+      "title": "Resume uploaded",
+      "description": "Uploaded Software_Engineer_Resume.pdf (ATS Score: 90%)",
+      "type": "resume",
+      "timestamp": "2026-10-10T10:00:00.000Z"
+    },
+    {
+      "id": "act-1791827388130-ejzv0",
+      "userId": "test-user-1791827388100",
+      "action": "interview_completed",
+      "title": "Interview completed",
+      "description": "Completed Technical mock interview with 92% score",
+      "type": "interview",
+      "timestamp": "2026-10-10T14:00:00.000Z"
+    },
+    {
+      "id": "act-1791827388129-9qmic",
+      "userId": "test-user-1791827388100",
+      "action": "application_status_changed",
+      "title": "Application status changed",
+      "description": "Google application advanced to Interview stage",
+      "type": "job",
+      "timestamp": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "id": "act-1791827388128-hzh3m",
+      "userId": "test-user-1791827388100",
+      "action": "resume_uploaded",
+      "title": "Resume uploaded",
+      "description": "Uploaded Software_Engineer_Resume.pdf (ATS Score: 90%)",
+      "type": "resume",
+      "timestamp": "2026-10-10T10:00:00.000Z"
+    },
+    {
+      "id": "act-1791823880542-3h5us",
+      "userId": "test-user-1791823880526",
+      "action": "interview_completed",
+      "title": "Interview completed",
+      "description": "Completed Technical mock interview with 92% score",
+      "type": "interview",
+      "timestamp": "2026-10-10T14:00:00.000Z"
+    },
+    {
+      "id": "act-1791823880542-4nmkx",
+      "userId": "test-user-1791823880526",
+      "action": "application_status_changed",
+      "title": "Application status changed",
+      "description": "Google application advanced to Interview stage",
+      "type": "job",
+      "timestamp": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "id": "act-1791823880541-00yrn",
+      "userId": "test-user-1791823880526",
+      "action": "resume_uploaded",
+      "title": "Resume uploaded",
+      "description": "Uploaded Software_Engineer_Resume.pdf (ATS Score: 90%)",
+      "type": "resume",
+      "timestamp": "2026-10-10T10:00:00.000Z"
+    },
+    {
+      "id": "act-1791823853298-dammc",
+      "userId": "test-user-1791823853275",
+      "action": "interview_completed",
+      "title": "Interview completed",
+      "description": "Completed Technical mock interview with 92% score",
+      "type": "interview",
+      "timestamp": "2026-10-10T14:00:00.000Z"
+    },
+    {
+      "id": "act-1791823853297-l7xjb",
+      "userId": "test-user-1791823853275",
+      "action": "application_status_changed",
+      "title": "Application status changed",
+      "description": "Google application advanced to Interview stage",
+      "type": "job",
+      "timestamp": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "id": "act-1791823853297-fmpge",
+      "userId": "test-user-1791823853275",
+      "action": "resume_uploaded",
+      "title": "Resume uploaded",
+      "description": "Uploaded Software_Engineer_Resume.pdf (ATS Score: 90%)",
+      "type": "resume",
+      "timestamp": "2026-10-10T10:00:00.000Z"
+    },
+    {
+      "id": "act-1791823833242-ftbsd",
+      "userId": "test-user-1791823833227",
+      "action": "interview_completed",
+      "title": "Interview completed",
+      "description": "Completed Technical mock interview with 92% score",
+      "type": "interview",
+      "timestamp": "2026-10-10T14:00:00.000Z"
+    },
+    {
+      "id": "act-1791823833242-bxuxa",
+      "userId": "test-user-1791823833227",
+      "action": "application_status_changed",
+      "title": "Application status changed",
+      "description": "Google application advanced to Interview stage",
+      "type": "job",
+      "timestamp": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "id": "act-1791823833241-zp0uu",
+      "userId": "test-user-1791823833227",
+      "action": "resume_uploaded",
+      "title": "Resume uploaded",
+      "description": "Uploaded Software_Engineer_Resume.pdf (ATS Score: 90%)",
+      "type": "resume",
+      "timestamp": "2026-10-10T10:00:00.000Z"
+    },
+    {
+      "id": "act-1791823817576-xtdu3",
+      "userId": "test-user-1791823817559",
+      "action": "interview_completed",
+      "title": "Interview completed",
+      "description": "Completed Technical mock interview with 92% score",
+      "type": "interview",
+      "timestamp": "2026-10-10T14:00:00.000Z"
+    },
+    {
+      "id": "act-1791823817576-9plfm",
+      "userId": "test-user-1791823817559",
+      "action": "application_status_changed",
+      "title": "Application status changed",
+      "description": "Google application advanced to Interview stage",
+      "type": "job",
+      "timestamp": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "id": "act-1791823817575-ngzzv",
+      "userId": "test-user-1791823817559",
+      "action": "resume_uploaded",
+      "title": "Resume uploaded",
+      "description": "Uploaded Software_Engineer_Resume.pdf (ATS Score: 90%)",
+      "type": "resume",
+      "timestamp": "2026-10-10T10:00:00.000Z"
+    },
+    {
+      "id": "act-1791823073848-gjcbk",
+      "userId": "test-user-1791823073833",
+      "action": "interview_completed",
+      "title": "Interview completed",
+      "description": "Completed Technical mock interview with 92% score",
+      "type": "interview",
+      "timestamp": "2026-10-10T14:00:00.000Z"
+    },
+    {
+      "id": "act-1791823073848-d2ydj",
+      "userId": "test-user-1791823073833",
+      "action": "application_status_changed",
+      "title": "Application status changed",
+      "description": "Google application advanced to Interview stage",
+      "type": "job",
+      "timestamp": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "id": "act-1791823073847-mbvuc",
+      "userId": "test-user-1791823073833",
+      "action": "resume_uploaded",
+      "title": "Resume uploaded",
+      "description": "Uploaded Software_Engineer_Resume.pdf (ATS Score: 90%)",
+      "type": "resume",
+      "timestamp": "2026-10-10T10:00:00.000Z"
+    },
     {
       "id": "act-1791746611047-fksvy",
       "userId": "test-user-1791746611031",

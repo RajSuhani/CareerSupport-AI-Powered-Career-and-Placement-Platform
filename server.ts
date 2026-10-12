@@ -14,13 +14,22 @@ import interviewRoutes from './server/routes/interviews.ts';
 import dsaRoutes from './server/routes/dsa.ts';
 import dashboardRoutes from './server/routes/dashboard.ts';
 import aiRoutes from './server/routes/ai.ts';
+import { assertValidServerConfiguration } from './server/config/secrets.ts';
+import { db, initDatabase, getDatabaseType, isPostgresConfigured } from './server/db/database.ts';
 
 dotenv.config();
+
+// Assert security configuration before starting services
+assertValidServerConfiguration();
 
 const app = express();
 const server = http.createServer(app);
 const PORT = parseInt(process.env.PORT || '3000', 10);
 const isProduction = process.env.NODE_ENV === 'production';
+
+// Enable trust proxy for standard reverse proxies (Cloud Run, GCP load balancers, etc.)
+// Express rate limiter and IP detection will correctly read X-Forwarded-For when 1 hop upstream
+app.set('trust proxy', 1);
 
 // Body parsers
 app.use(express.json({ limit: '15mb' }));
@@ -45,12 +54,34 @@ app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/ai', aiRoutes);
 
 // Health check endpoint
-app.get('/api/health', (_req, res) => {
-  res.json({
-    status: 'ok',
-    timestamp: new Date().toISOString(),
-    service: 'CareerSupport API',
-  });
+app.get('/api/health', async (_req, res) => {
+  try {
+    const dbHealth = await db.checkHealth();
+    const isHealthy = dbHealth.status === 'healthy';
+    const httpStatus = dbHealth.status === 'unhealthy' ? 503 : 200;
+
+    res.status(httpStatus).json({
+      status: isHealthy ? 'ok' : dbHealth.status,
+      timestamp: new Date().toISOString(),
+      service: 'CareerSupport API',
+      database: {
+        ...dbHealth,
+        ready: dbHealth.isReady ?? (dbHealth.status === 'healthy'),
+      },
+    });
+  } catch (err: any) {
+    res.status(503).json({
+      status: 'unhealthy',
+      timestamp: new Date().toISOString(),
+      service: 'CareerSupport API',
+      database: {
+        status: 'unhealthy',
+        ready: false,
+        type: isPostgresConfigured() ? 'postgres' : 'json',
+        error: err.message || 'Database health check failed',
+      },
+    });
+  }
 });
 
 // WebSocket Server for Gemini 3.8 Live API Voice Conversations
@@ -128,6 +159,21 @@ wss.on('connection', async (clientWs: WebSocket) => {
 });
 
 async function startServer() {
+  console.log('[Startup] Initializing persistent database storage...');
+  try {
+    await initDatabase();
+    console.log(`[Startup] Database initialized and verified ready (${getDatabaseType()})`);
+  } catch (err: any) {
+    console.error(`[FATAL Startup Error] Database initialization failed: ${err.message}`);
+    if (isPostgresConfigured()) {
+      console.error(
+        '[FATAL Startup Error] PostgreSQL is configured via DATABASE_URL/Cloud SQL, but connection or initialization failed.\n' +
+        'Startup aborted to prevent silent fallback to ephemeral storage or data corruption.'
+      );
+    }
+    throw err;
+  }
+
   if (!isProduction) {
     // Development mode with Vite middleware
     const { createServer } = await import('vite');
@@ -172,12 +218,23 @@ async function startServer() {
     });
   }
 
-  server.listen(PORT, '0.0.0.0', () => {
-    console.log(`🚀 CareerSupport Full-Stack Server running at http://localhost:${PORT}`);
+  return new Promise<void>((resolve, reject) => {
+    server.listen(PORT, '0.0.0.0', () => {
+      console.log(`🚀 CareerSupport Full-Stack Server running at http://localhost:${PORT}`);
+      resolve();
+    });
+    server.on('error', (err) => {
+      reject(err);
+    });
   });
 }
 
-startServer().catch(err => {
-  console.error('Failed to start server:', err);
-  process.exit(1);
-});
+// In test runner environments, do not automatically start the HTTP server
+if (process.env.NODE_ENV !== 'test') {
+  startServer().catch(err => {
+    console.error('Failed to start server:', err);
+    process.exit(1);
+  });
+}
+
+export { app, server, startServer };

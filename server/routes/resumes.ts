@@ -4,6 +4,7 @@ import { createRequire } from 'module';
 import { z } from 'zod';
 import { db, type ResumeAnalysis } from '../db/database.ts';
 import { authMiddleware, type AuthenticatedRequest } from '../middleware/auth.ts';
+import { resumeAnalysisRateLimiter } from '../middleware/rateLimiter.ts';
 import { analyzeResumeWithGemini } from '../services/ai.ts';
 
 const require = createRequire(import.meta.url);
@@ -27,38 +28,54 @@ const upload = multer({
 });
 
 // GET /api/resumes - Get analysis history for current user
-router.get('/', authMiddleware, (req: AuthenticatedRequest, res: Response) => {
-  const userId = req.user!.id;
-  const history = db.getResumesByUser(userId);
-  res.json({ resumes: history });
+router.get('/', authMiddleware, async (req: AuthenticatedRequest, res: Response) => {
+  try {
+    const userId = req.user!.id;
+    const history = await db.getResumesByUser(userId);
+    res.json({ resumes: history });
+  } catch (error: any) {
+    console.error('Fetch resumes error:', error);
+    res.status(500).json({ error: 'Failed to retrieve resume analyses' });
+  }
 });
 
 // GET /api/resumes/:id - Get specific resume analysis
-router.get('/:id', authMiddleware, (req: AuthenticatedRequest, res: Response) => {
-  const userId = req.user!.id;
-  const resume = db.findResumeById(req.params.id, userId);
-  if (!resume) {
-    res.status(404).json({ error: 'Resume analysis not found or unauthorized' });
-    return;
+router.get('/:id', authMiddleware, async (req: AuthenticatedRequest, res: Response) => {
+  try {
+    const userId = req.user!.id;
+    const resume = await db.findResumeById(req.params.id, userId);
+    if (!resume) {
+      res.status(404).json({ error: 'Resume analysis not found or unauthorized' });
+      return;
+    }
+    res.json({ resume });
+  } catch (error: any) {
+    console.error('Fetch resume by id error:', error);
+    res.status(500).json({ error: 'Failed to retrieve resume analysis' });
   }
-  res.json({ resume });
 });
 
 // DELETE /api/resumes/:id - Delete analysis
-router.delete('/:id', authMiddleware, (req: AuthenticatedRequest, res: Response) => {
-  const userId = req.user!.id;
-  const deleted = db.deleteResume(req.params.id, userId);
-  if (!deleted) {
-    res.status(404).json({ error: 'Resume record not found or unauthorized' });
-    return;
+router.delete('/:id', authMiddleware, async (req: AuthenticatedRequest, res: Response) => {
+  try {
+    const userId = req.user!.id;
+    const deleted = await db.deleteResume(req.params.id, userId);
+    if (!deleted) {
+      res.status(404).json({ error: 'Resume record not found or unauthorized' });
+      return;
+    }
+    res.json({ success: true, message: 'Resume analysis removed successfully' });
+  } catch (error: any) {
+    console.error('Delete resume error:', error);
+    res.status(500).json({ error: 'Failed to delete resume analysis' });
   }
-  res.json({ success: true, message: 'Resume analysis removed successfully' });
 });
 
 // POST /api/resumes/analyze - Analyze uploaded PDF or pasted text
 router.post(
   '/analyze',
   authMiddleware,
+  resumeAnalysisRateLimiter,
   upload.single('resumeFile'),
   async (req: AuthenticatedRequest, res: Response) => {
     try {
@@ -122,10 +139,10 @@ router.post(
         createdAt: new Date().toISOString(),
       };
 
-      db.createResume(newAnalysis);
+      await db.createResume(newAnalysis);
 
       // Log user activity
-      db.logActivity({
+      await db.logActivity({
         userId,
         action: 'resume_uploaded',
         title: 'Resume uploaded',

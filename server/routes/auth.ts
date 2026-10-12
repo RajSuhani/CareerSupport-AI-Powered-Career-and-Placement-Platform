@@ -3,7 +3,8 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { z } from 'zod';
 import { db, type User } from '../db/database.ts';
-import { authMiddleware, type AuthenticatedRequest, JWT_SECRET } from '../middleware/auth.ts';
+import { authMiddleware, type AuthenticatedRequest, getJwtSecret } from '../middleware/auth.ts';
+import { authRateLimiter, demoAuthRateLimiter } from '../middleware/rateLimiter.ts';
 
 const router = Router();
 
@@ -37,7 +38,7 @@ function sanitizeUser(user: User): Omit<User, 'passwordHash'> {
 }
 
 // POST /api/auth/register
-router.post('/register', async (req: Request, res: Response) => {
+router.post('/register', authRateLimiter, async (req: Request, res: Response) => {
   try {
     const parseResult = registerSchema.safeParse(req.body);
     if (!parseResult.success) {
@@ -47,7 +48,7 @@ router.post('/register', async (req: Request, res: Response) => {
 
     const { name, email, password, targetRole, experienceLevel, skills, education } = parseResult.data;
 
-    const existingUser = db.findUserByEmail(email);
+    const existingUser = await db.findUserByEmail(email);
     if (existingUser) {
       res.status(400).json({ error: 'An account with this email already exists' });
       return;
@@ -69,9 +70,9 @@ router.post('/register', async (req: Request, res: Response) => {
       updatedAt: new Date().toISOString(),
     };
 
-    db.createUser(newUser);
+    await db.createUser(newUser);
 
-    const token = jwt.sign({ userId: newUser.id }, JWT_SECRET, { expiresIn: '7d' });
+    const token = jwt.sign({ userId: newUser.id }, getJwtSecret(), { expiresIn: '7d' });
 
     res.cookie('token', token, {
       httpOnly: true,
@@ -91,7 +92,7 @@ router.post('/register', async (req: Request, res: Response) => {
 });
 
 // POST /api/auth/login
-router.post('/login', async (req: Request, res: Response) => {
+router.post('/login', authRateLimiter, async (req: Request, res: Response) => {
   try {
     const parseResult = loginSchema.safeParse(req.body);
     if (!parseResult.success) {
@@ -100,7 +101,7 @@ router.post('/login', async (req: Request, res: Response) => {
     }
 
     const { email, password } = parseResult.data;
-    const user = db.findUserByEmail(email);
+    const user = await db.findUserByEmail(email);
     if (!user) {
       res.status(401).json({ error: 'Invalid email or password' });
       return;
@@ -112,7 +113,7 @@ router.post('/login', async (req: Request, res: Response) => {
       return;
     }
 
-    const token = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: '7d' });
+    const token = jwt.sign({ userId: user.id }, getJwtSecret(), { expiresIn: '7d' });
 
     res.cookie('token', token, {
       httpOnly: true,
@@ -132,10 +133,10 @@ router.post('/login', async (req: Request, res: Response) => {
 });
 
 // POST /api/auth/demo-login (Quick evaluator login)
-router.post('/demo-login', async (_req: Request, res: Response) => {
+router.post('/demo-login', demoAuthRateLimiter, async (_req: Request, res: Response) => {
   try {
     const demoEmail = 'alex.chen@university.edu';
-    let demoUser = db.findUserByEmail(demoEmail);
+    let demoUser = await db.findUserByEmail(demoEmail);
 
     if (!demoUser) {
       const salt = await bcrypt.genSalt(10);
@@ -153,10 +154,10 @@ router.post('/demo-login', async (_req: Request, res: Response) => {
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
       };
-      db.createUser(demoUser);
+      await db.createUser(demoUser);
 
       // Seed initial realistic job applications for demo account
-      db.createJob({
+      await db.createJob({
         id: 'job-demo-1',
         userId: demoUser.id,
         company: 'Stripe',
@@ -172,7 +173,7 @@ router.post('/demo-login', async (_req: Request, res: Response) => {
         updatedAt: new Date().toISOString(),
       });
 
-      db.createJob({
+      await db.createJob({
         id: 'job-demo-2',
         userId: demoUser.id,
         company: 'Figma',
@@ -188,7 +189,7 @@ router.post('/demo-login', async (_req: Request, res: Response) => {
         updatedAt: new Date().toISOString(),
       });
 
-      db.createJob({
+      await db.createJob({
         id: 'job-demo-3',
         userId: demoUser.id,
         company: 'Linear',
@@ -202,7 +203,7 @@ router.post('/demo-login', async (_req: Request, res: Response) => {
         updatedAt: new Date().toISOString(),
       });
 
-      db.createJob({
+      await db.createJob({
         id: 'job-demo-4',
         userId: demoUser.id,
         company: 'Datadog',
@@ -217,7 +218,7 @@ router.post('/demo-login', async (_req: Request, res: Response) => {
       });
 
       // Seed initial sample resume analysis
-      db.createResume({
+      await db.createResume({
         id: 'res-demo-1',
         userId: demoUser.id,
         fileName: 'Alex_Chen_Software_Engineer_Resume.pdf',
@@ -247,15 +248,15 @@ router.post('/demo-login', async (_req: Request, res: Response) => {
       });
 
       // Seed sample DSA solved problems
-      db.upsertUserDsaProgress(demoUser.id, 'dsa-1', { status: 'Solved', notes: 'Classic two pointer or hash map complement lookup. O(N) time and O(N) space.' });
-      db.upsertUserDsaProgress(demoUser.id, 'dsa-2', { status: 'Solved', notes: 'Character frequency array of size 26 works in O(N).' });
-      db.upsertUserDsaProgress(demoUser.id, 'dsa-5', { status: 'Solved', notes: 'Two pointers skipping non-alphanumeric chars.' });
-      db.upsertUserDsaProgress(demoUser.id, 'dsa-10', { status: 'Solved', notes: 'Stack matching for brackets.' });
-      db.upsertUserDsaProgress(demoUser.id, 'dsa-8', { status: 'Solved', notes: 'Keep minimum buy price seen so far.' });
-      db.upsertUserDsaProgress(demoUser.id, 'dsa-3', { status: 'In Progress', notes: 'Sorting each string vs tuple count signature.' });
+      await db.upsertUserDsaProgress(demoUser.id, 'dsa-1', { status: 'Solved', notes: 'Classic two pointer or hash map complement lookup. O(N) time and O(N) space.' });
+      await db.upsertUserDsaProgress(demoUser.id, 'dsa-2', { status: 'Solved', notes: 'Character frequency array of size 26 works in O(N).' });
+      await db.upsertUserDsaProgress(demoUser.id, 'dsa-5', { status: 'Solved', notes: 'Two pointers skipping non-alphanumeric chars.' });
+      await db.upsertUserDsaProgress(demoUser.id, 'dsa-10', { status: 'Solved', notes: 'Stack matching for brackets.' });
+      await db.upsertUserDsaProgress(demoUser.id, 'dsa-8', { status: 'Solved', notes: 'Keep minimum buy price seen so far.' });
+      await db.upsertUserDsaProgress(demoUser.id, 'dsa-3', { status: 'In Progress', notes: 'Sorting each string vs tuple count signature.' });
 
       // Seed chronological activities for demo user
-      db.logActivity({
+      await db.logActivity({
         userId: demoUser.id,
         action: 'interview_completed',
         title: 'Interview completed',
@@ -264,7 +265,7 @@ router.post('/demo-login', async (_req: Request, res: Response) => {
         timestamp: new Date(Date.now() - 2 * 3600000).toISOString(),
       });
 
-      db.logActivity({
+      await db.logActivity({
         userId: demoUser.id,
         action: 'application_status_changed',
         title: 'Application status changed',
@@ -273,7 +274,7 @@ router.post('/demo-login', async (_req: Request, res: Response) => {
         timestamp: new Date(Date.now() - 14 * 3600000).toISOString(),
       });
 
-      db.logActivity({
+      await db.logActivity({
         userId: demoUser.id,
         action: 'application_status_changed',
         title: 'Application status changed',
@@ -282,7 +283,7 @@ router.post('/demo-login', async (_req: Request, res: Response) => {
         timestamp: new Date(Date.now() - 1.5 * 86400000).toISOString(),
       });
 
-      db.logActivity({
+      await db.logActivity({
         userId: demoUser.id,
         action: 'resume_uploaded',
         title: 'Resume uploaded',
@@ -291,7 +292,7 @@ router.post('/demo-login', async (_req: Request, res: Response) => {
         timestamp: new Date(Date.now() - 3 * 86400000).toISOString(),
       });
 
-      db.logActivity({
+      await db.logActivity({
         userId: demoUser.id,
         action: 'dsa_solved',
         title: 'DSA problem solved',
@@ -302,8 +303,9 @@ router.post('/demo-login', async (_req: Request, res: Response) => {
     }
 
     // Ensure activities exist for demo user
-    if (db.getActivitiesByUser(demoUser.id).length === 0) {
-      db.logActivity({
+    const existingActivities = await db.getActivitiesByUser(demoUser.id);
+    if (existingActivities.length === 0) {
+      await db.logActivity({
         userId: demoUser.id,
         action: 'interview_completed',
         title: 'Interview completed',
@@ -312,7 +314,7 @@ router.post('/demo-login', async (_req: Request, res: Response) => {
         timestamp: new Date(Date.now() - 2 * 3600000).toISOString(),
       });
 
-      db.logActivity({
+      await db.logActivity({
         userId: demoUser.id,
         action: 'application_status_changed',
         title: 'Application status changed',
@@ -321,7 +323,7 @@ router.post('/demo-login', async (_req: Request, res: Response) => {
         timestamp: new Date(Date.now() - 14 * 3600000).toISOString(),
       });
 
-      db.logActivity({
+      await db.logActivity({
         userId: demoUser.id,
         action: 'application_status_changed',
         title: 'Application status changed',
@@ -330,7 +332,7 @@ router.post('/demo-login', async (_req: Request, res: Response) => {
         timestamp: new Date(Date.now() - 1.5 * 86400000).toISOString(),
       });
 
-      db.logActivity({
+      await db.logActivity({
         userId: demoUser.id,
         action: 'resume_uploaded',
         title: 'Resume uploaded',
@@ -339,7 +341,7 @@ router.post('/demo-login', async (_req: Request, res: Response) => {
         timestamp: new Date(Date.now() - 3 * 86400000).toISOString(),
       });
 
-      db.logActivity({
+      await db.logActivity({
         userId: demoUser.id,
         action: 'dsa_solved',
         title: 'DSA problem solved',
@@ -349,7 +351,7 @@ router.post('/demo-login', async (_req: Request, res: Response) => {
       });
     }
 
-    const token = jwt.sign({ userId: demoUser.id }, JWT_SECRET, { expiresIn: '7d' });
+    const token = jwt.sign({ userId: demoUser.id }, getJwtSecret(), { expiresIn: '7d' });
 
     res.cookie('token', token, {
       httpOnly: true,
@@ -385,25 +387,30 @@ router.get('/me', authMiddleware, (req: AuthenticatedRequest, res: Response) => 
 });
 
 // PUT /api/auth/profile
-router.put('/profile', authMiddleware, (req: AuthenticatedRequest, res: Response) => {
-  if (!req.user) {
-    res.status(401).json({ error: 'Not authenticated' });
-    return;
-  }
+router.put('/profile', authMiddleware, async (req: AuthenticatedRequest, res: Response) => {
+  try {
+    if (!req.user) {
+      res.status(401).json({ error: 'Not authenticated' });
+      return;
+    }
 
-  const parseResult = profileUpdateSchema.safeParse(req.body);
-  if (!parseResult.success) {
-    res.status(400).json({ error: parseResult.error.issues[0].message });
-    return;
-  }
+    const parseResult = profileUpdateSchema.safeParse(req.body);
+    if (!parseResult.success) {
+      res.status(400).json({ error: parseResult.error.issues[0].message });
+      return;
+    }
 
-  const updated = db.updateUser(req.user.id, parseResult.data);
-  if (!updated) {
-    res.status(404).json({ error: 'User not found' });
-    return;
-  }
+    const updated = await db.updateUser(req.user.id, parseResult.data);
+    if (!updated) {
+      res.status(404).json({ error: 'User not found' });
+      return;
+    }
 
-  res.json({ user: sanitizeUser(updated) });
+    res.json({ user: sanitizeUser(updated) });
+  } catch (error: any) {
+    console.error('Profile update error:', error);
+    res.status(500).json({ error: 'Failed to update user profile' });
+  }
 });
 
 export default router;

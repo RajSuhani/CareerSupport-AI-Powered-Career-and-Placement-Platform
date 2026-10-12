@@ -1,6 +1,7 @@
 import { Router, type Response } from 'express';
 import { z } from 'zod';
 import { authMiddleware, type AuthenticatedRequest } from '../middleware/auth.ts';
+import { marketResearchRateLimiter, transcriptionRateLimiter } from '../middleware/rateLimiter.ts';
 import { transcribeAudio, searchGroundedMarketResearch, chatWithGemini } from '../services/ai.ts';
 
 const router = Router();
@@ -25,7 +26,7 @@ const chatSchema = z.object({
 });
 
 // POST /api/ai/transcribe - Audio transcription with gemini-3.5-transcribe
-router.post('/transcribe', authMiddleware, async (req: AuthenticatedRequest, res: Response) => {
+router.post('/transcribe', authMiddleware, transcriptionRateLimiter, async (req: AuthenticatedRequest, res: Response) => {
   try {
     const parseResult = transcribeSchema.safeParse(req.body);
     if (!parseResult.success) {
@@ -45,7 +46,7 @@ router.post('/transcribe', authMiddleware, async (req: AuthenticatedRequest, res
 });
 
 // POST /api/ai/market-research - Google Search Grounding with gemini-3.5-flash
-router.post('/market-research', authMiddleware, async (req: AuthenticatedRequest, res: Response) => {
+router.post('/market-research', authMiddleware, marketResearchRateLimiter, async (req: AuthenticatedRequest, res: Response) => {
   try {
     const parseResult = marketResearchSchema.safeParse(req.body);
     if (!parseResult.success) {
@@ -65,7 +66,7 @@ router.post('/market-research', authMiddleware, async (req: AuthenticatedRequest
 });
 
 // POST /api/ai/chat - Multi-turn conversation with gemini-3.5-flash
-router.post('/chat', authMiddleware, async (req: AuthenticatedRequest, res: Response) => {
+router.post('/chat', authMiddleware, marketResearchRateLimiter, async (req: AuthenticatedRequest, res: Response) => {
   try {
     const parseResult = chatSchema.safeParse(req.body);
     if (!parseResult.success) {

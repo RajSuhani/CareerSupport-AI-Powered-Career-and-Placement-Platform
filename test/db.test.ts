@@ -4,10 +4,11 @@ import { db, type JobApplication, type User } from '../server/db/database.ts';
 describe('CareerSupport Database & Entity Operations', () => {
   const testUserId = `test-user-${Date.now()}`;
 
-  beforeEach(() => {
+  beforeEach(async () => {
     // Ensure test user exists
-    if (!db.findUserById(testUserId)) {
-      db.createUser({
+    const existing = await db.findUserById(testUserId);
+    if (!existing) {
+      await db.createUser({
         id: testUserId,
         name: 'Test Candidate',
         email: `candidate-${Date.now()}@test.edu`,
@@ -22,7 +23,7 @@ describe('CareerSupport Database & Entity Operations', () => {
     }
   });
 
-  it('creates and retrieves a job application for the authenticated user', () => {
+  it('creates and retrieves a job application for the authenticated user', async () => {
     const newJob: JobApplication = {
       id: `job-test-${Date.now()}`,
       userId: testUserId,
@@ -37,37 +38,39 @@ describe('CareerSupport Database & Entity Operations', () => {
       updatedAt: new Date().toISOString(),
     };
 
-    db.createJob(newJob);
-    const found = db.findJobById(newJob.id, testUserId);
+    await db.createJob(newJob);
+    const found = await db.findJobById(newJob.id, testUserId);
     expect(found).toBeDefined();
     expect(found?.company).toBe('TestCorp Technologies');
     expect(found?.status).toBe('Applied');
   });
 
-  it('updates job application status correctly', () => {
-    const job = db.getJobsByUser(testUserId)[0];
+  it('updates job application status correctly', async () => {
+    const jobs = await db.getJobsByUser(testUserId);
+    const job = jobs[0];
     expect(job).toBeDefined();
 
-    const updated = db.updateJob(job.id, testUserId, { status: 'Interview', notes: 'Scheduled round 1' });
+    const updated = await db.updateJob(job.id, testUserId, { status: 'Interview', notes: 'Scheduled round 1' });
     expect(updated).not.toBeNull();
     expect(updated?.status).toBe('Interview');
     expect(updated?.notes).toBe('Scheduled round 1');
   });
 
-  it('enforces user isolation: another user cannot access or delete records', () => {
-    const job = db.getJobsByUser(testUserId)[0];
+  it('enforces user isolation: another user cannot access or delete records', async () => {
+    const jobs = await db.getJobsByUser(testUserId);
+    const job = jobs[0];
     const otherUserId = 'unauthorized-user-999';
 
-    const notFound = db.findJobById(job.id, otherUserId);
+    const notFound = await db.findJobById(job.id, otherUserId);
     expect(notFound).toBeUndefined();
 
-    const deleteAttempt = db.deleteJob(job.id, otherUserId);
+    const deleteAttempt = await db.deleteJob(job.id, otherUserId);
     expect(deleteAttempt).toBe(false);
   });
 
-  it('tracks and updates DSA problem progress', () => {
+  it('tracks and updates DSA problem progress', async () => {
     const problemId = 'dsa-1'; // Two Sum
-    const progress = db.upsertUserDsaProgress(testUserId, problemId, {
+    const progress = await db.upsertUserDsaProgress(testUserId, problemId, {
       status: 'Solved',
       notes: 'Solved using hash map in O(N) time and O(N) space.',
       isBookmarked: true,
@@ -77,14 +80,14 @@ describe('CareerSupport Database & Entity Operations', () => {
     expect(progress.status).toBe('Solved');
     expect(progress.isBookmarked).toBe(true);
 
-    const userProgress = db.getUserDsaProgress(testUserId);
+    const userProgress = await db.getUserDsaProgress(testUserId);
     const found = userProgress.find(p => p.problemId === problemId);
     expect(found?.status).toBe('Solved');
   });
 
-  it('logs and retrieves chronological user actions in descending order', () => {
+  it('logs and retrieves chronological user actions in descending order', async () => {
     // 1. Resume uploaded
-    db.logActivity({
+    await db.logActivity({
       userId: testUserId,
       action: 'resume_uploaded',
       title: 'Resume uploaded',
@@ -94,7 +97,7 @@ describe('CareerSupport Database & Entity Operations', () => {
     });
 
     // 2. Application status changed
-    db.logActivity({
+    await db.logActivity({
       userId: testUserId,
       action: 'application_status_changed',
       title: 'Application status changed',
@@ -104,7 +107,7 @@ describe('CareerSupport Database & Entity Operations', () => {
     });
 
     // 3. Interview completed
-    db.logActivity({
+    await db.logActivity({
       userId: testUserId,
       action: 'interview_completed',
       title: 'Interview completed',
@@ -113,7 +116,7 @@ describe('CareerSupport Database & Entity Operations', () => {
       timestamp: '2026-10-10T14:00:00.000Z',
     });
 
-    const activities = db.getActivitiesByUser(testUserId, 10);
+    const activities = await db.getActivitiesByUser(testUserId, 10);
     expect(activities.length).toBeGreaterThanOrEqual(3);
 
     // Verify chronological order: newest (14:00) first
@@ -122,7 +125,7 @@ describe('CareerSupport Database & Entity Operations', () => {
     expect(activities[2].title).toBe('Resume uploaded');
 
     // Verify user isolation
-    const otherUserActivities = db.getActivitiesByUser('other-user-999');
+    const otherUserActivities = await db.getActivitiesByUser('other-user-999');
     expect(otherUserActivities.length).toBe(0);
   });
 });

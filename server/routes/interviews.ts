@@ -2,6 +2,7 @@ import { Router, type Response } from 'express';
 import { z } from 'zod';
 import { db, type InterviewSession, type InterviewCategory, type InterviewDifficulty } from '../db/database.ts';
 import { authMiddleware, type AuthenticatedRequest } from '../middleware/auth.ts';
+import { interviewStartRateLimiter, interviewEvaluationRateLimiter } from '../middleware/rateLimiter.ts';
 import { generateInterviewQuestions, evaluateInterviewAnswer } from '../services/ai.ts';
 
 const router = Router();
@@ -21,25 +22,35 @@ const submitAnswerSchema = z.object({
 });
 
 // GET /api/interviews - List user's sessions
-router.get('/', authMiddleware, (req: AuthenticatedRequest, res: Response) => {
-  const userId = req.user!.id;
-  const sessions = db.getInterviewsByUser(userId);
-  res.json({ sessions });
+router.get('/', authMiddleware, async (req: AuthenticatedRequest, res: Response) => {
+  try {
+    const userId = req.user!.id;
+    const sessions = await db.getInterviewsByUser(userId);
+    res.json({ sessions });
+  } catch (error: any) {
+    console.error('Fetch interview sessions error:', error);
+    res.status(500).json({ error: 'Failed to retrieve interview sessions' });
+  }
 });
 
 // GET /api/interviews/:id - Session detail
-router.get('/:id', authMiddleware, (req: AuthenticatedRequest, res: Response) => {
-  const userId = req.user!.id;
-  const session = db.findInterviewById(req.params.id, userId);
-  if (!session) {
-    res.status(404).json({ error: 'Interview session not found' });
-    return;
+router.get('/:id', authMiddleware, async (req: AuthenticatedRequest, res: Response) => {
+  try {
+    const userId = req.user!.id;
+    const session = await db.findInterviewById(req.params.id, userId);
+    if (!session) {
+      res.status(404).json({ error: 'Interview session not found' });
+      return;
+    }
+    res.json({ session });
+  } catch (error: any) {
+    console.error('Fetch interview by id error:', error);
+    res.status(500).json({ error: 'Failed to retrieve interview session details' });
   }
-  res.json({ session });
 });
 
 // POST /api/interviews/start - Generate questions and create session
-router.post('/start', authMiddleware, async (req: AuthenticatedRequest, res: Response) => {
+router.post('/start', authMiddleware, interviewStartRateLimiter, async (req: AuthenticatedRequest, res: Response) => {
   try {
     const parseResult = startInterviewSchema.safeParse(req.body);
     if (!parseResult.success) {
@@ -79,7 +90,7 @@ router.post('/start', authMiddleware, async (req: AuthenticatedRequest, res: Res
       createdAt: new Date().toISOString(),
     };
 
-    db.createInterview(session);
+    await db.createInterview(session);
     res.status(201).json({ session });
   } catch (error: any) {
     console.error('Start interview error:', error);
@@ -88,7 +99,7 @@ router.post('/start', authMiddleware, async (req: AuthenticatedRequest, res: Res
 });
 
 // POST /api/interviews/:id/submit-answer - Grade single question answer
-router.post('/:id/submit-answer', authMiddleware, async (req: AuthenticatedRequest, res: Response) => {
+router.post('/:id/submit-answer', authMiddleware, interviewEvaluationRateLimiter, async (req: AuthenticatedRequest, res: Response) => {
   try {
     const parseResult = submitAnswerSchema.safeParse(req.body);
     if (!parseResult.success) {
@@ -97,7 +108,7 @@ router.post('/:id/submit-answer', authMiddleware, async (req: AuthenticatedReque
     }
 
     const userId = req.user!.id;
-    const session = db.findInterviewById(req.params.id, userId);
+    const session = await db.findInterviewById(req.params.id, userId);
     if (!session) {
       res.status(404).json({ error: 'Interview session not found' });
       return;
@@ -126,7 +137,7 @@ router.post('/:id/submit-answer', authMiddleware, async (req: AuthenticatedReque
     questionItem.score = evaluation.score;
     questionItem.feedback = evaluation;
 
-    db.updateInterview(session.id, userId, { questions: session.questions });
+    await db.updateInterview(session.id, userId, { questions: session.questions });
 
     res.json({
       question: questionItem,
@@ -139,10 +150,10 @@ router.post('/:id/submit-answer', authMiddleware, async (req: AuthenticatedReque
 });
 
 // POST /api/interviews/:id/complete - Complete the session
-router.post('/:id/complete', authMiddleware, (req: AuthenticatedRequest, res: Response) => {
+router.post('/:id/complete', authMiddleware, async (req: AuthenticatedRequest, res: Response) => {
   try {
     const userId = req.user!.id;
-    const session = db.findInterviewById(req.params.id, userId);
+    const session = await db.findInterviewById(req.params.id, userId);
     if (!session) {
       res.status(404).json({ error: 'Interview session not found' });
       return;
@@ -163,7 +174,7 @@ router.post('/:id/complete', authMiddleware, (req: AuthenticatedRequest, res: Re
       overallSummary = 'Good effort! Review the specific feedback points for each question to strengthen depth and structured problem-solving (e.g. STAR framework).';
     }
 
-    const updated = db.updateInterview(session.id, userId, {
+    const updated = await db.updateInterview(session.id, userId, {
       status: 'completed',
       overallScore: avgScore,
       overallSummary,
@@ -171,7 +182,7 @@ router.post('/:id/complete', authMiddleware, (req: AuthenticatedRequest, res: Re
     });
 
     // Log user activity
-    db.logActivity({
+    await db.logActivity({
       userId,
       action: 'interview_completed',
       title: 'Interview completed',
